@@ -18,8 +18,6 @@ public class C01_Priority {
         WebDriverManager.chromedriver().setup();
        driver= new ChromeDriver();
         driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
-
-
     }
     @Test(priority = 1)
 
