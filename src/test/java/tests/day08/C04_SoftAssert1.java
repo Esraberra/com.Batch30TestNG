@@ -24,45 +24,51 @@ public class C04_SoftAssert1 {
     //6.Sonuc yazisinin “oto” kelimesi icermedigini dogrulayin
 
     WebDriver driver;
+
     @BeforeClass
-    public void setup(){
+    public void setup() {
         WebDriverManager.chromedriver().setup();
-        driver=new ChromeDriver();
+        driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 
     }
+
     @Test
     public void test() {
         driver.get("http://hepsiburada.com/");
         //verify edin diyorsa soft assert kullanin
-        String expectedTitle= "Turkiye’nin En Buyuk Alisveris Sitesi";
-        String actualBaslik=driver.getTitle();
-        SoftAssert softAssert=new SoftAssert();
-       softAssert.assertTrue(actualBaslik.equals(expectedTitle),"baslik beklenen ile eslesmedi");
+
+        String expectedTitle = "Turkiye’nin En Buyuk Alisveris Sitesi";
+
+        String actualBaslik = driver.getTitle();
+
+        SoftAssert softAssert = new SoftAssert();
+
+        softAssert.assertTrue(actualBaslik.equals(expectedTitle), "baslik beklenen ile eslesmedi");
 
 
-        driver.findElement(By.xpath("//input[@class='desktopOldAutosuggestTheme-input']")).sendKeys("araba"+ Keys.ENTER);
+        driver.findElement(By.xpath("//input[@class='desktopOldAutosuggestTheme-input']")).sendKeys("araba" + Keys.ENTER);
         //bulunan sonuc sayisini yazdirin
-        WebElement sonucYazisiElementi=driver.findElement(By.className("category-suggestion-title"));
+
+        WebElement sonucYazisiElementi = driver.findElement(By.className("category-suggestion-title"));
+
         System.out.println(sonucYazisiElementi.getText());
 //5.sonuc yazisinin "araba" icerdigini dogrulayin
-        softAssert.assertTrue(sonucYazisiElementi.getText().contains("araba"),",\" araba kelimesini icermiyor\"");
+
+        softAssert.assertTrue(sonucYazisiElementi.getText().contains("araba"), ",\" araba kelimesini icermiyor\"");
 
         //Sonuc yazisinin “oto” kelimesi icermedigini dogrulayin
-        softAssert.assertFalse(sonucYazisiElementi.getText().contains("oto"),"sonuc yazisi oto iceriyor");
+        softAssert.assertFalse(sonucYazisiElementi.getText().contains("oto"), "sonuc yazisi oto iceriyor");
 
         softAssert.assertAll();
     }
 
 
-
-
-
-
-
     @AfterClass
-    public void tearDown(){
-        //driver.close();
+    public void tearDown() {
+
+
+        driver.close();
     }
 }

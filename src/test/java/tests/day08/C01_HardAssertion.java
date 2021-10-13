@@ -19,15 +19,19 @@ public class C01_HardAssertion {
 // url'in amazon icerdigini test edin
 // title'in amazon icerdigini test edin
 // java kelimesi aratin ve listedeki ilk urunun java kelimesi icerdigini test edin
+
+
+
+
+
     WebDriver driver;
-
-
-
 
 
     @BeforeClass
     public void setup() {
+
         WebDriverManager.chromedriver().setup();
+
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
@@ -36,6 +40,7 @@ public class C01_HardAssertion {
 
     @Test
     public void test1(){
+
         driver.get("https://www.amazon.com");
 
         Assert.assertTrue(driver.getCurrentUrl().contains("amazon"));
@@ -44,13 +49,18 @@ public class C01_HardAssertion {
 
 
         WebElement aramakutusu= driver.findElement(By.id("twotabsearchbox"));
+
+
         aramakutusu.sendKeys("Java" + Keys.ENTER);
 
     }
 
 
+
+
 @AfterClass
     public void tearDown(){
+        driver.close();
 
 }
 

@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.html5.WebStorage;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
@@ -34,26 +35,35 @@ public class C02_DropDown {
 
     @Test
     public void test1(){
+
         driver.get("https://the-internet.herokuapp.com/dropdown");
-WebElement dropDown= driver.findElement(By.id("dropdown"));
+
+        WebElement dropDown= driver.findElement(By.id("dropdown"));
+
         Select select=new Select(dropDown);
-select.selectByIndex(1);
+
+        select.selectByIndex(1);
+
         System.out.println(select.getFirstSelectedOption().getText());
 
        // Value kullanarak Seçenek 2'yi (Option 2) seçin ve yazdırın
         select.selectByValue("2"); //index ile secip
+
         System.out.println(select.getFirstSelectedOption().getText());// get ile yazdiriyorutz
 
         select.selectByVisibleText("Option 1");
+
         System.out.println(select.getFirstSelectedOption().getText());
 
 
         //üm dropdown değerleri(value) yazdırın
         List<WebElement> opsiyonlar=select.getOptions();
+
         System.out.println("tüm opsiyonlar listesi");
 
-        for (WebElement each:opsiyonlar
-             ) {
+        for (WebElement each:opsiyonlar)
+
+        {
             System.out.println(each.getText());
 
         }
@@ -63,7 +73,11 @@ select.selectByIndex(1);
 
 
     }
+@AfterMethod
+    public void teardown(){
 
+        driver.close();
+}
 
 
 }

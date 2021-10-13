@@ -15,24 +15,32 @@ public class C01_Priority {
 
     @BeforeMethod
    public void setup(){
+
         WebDriverManager.chromedriver().setup();
-       driver= new ChromeDriver();
+        driver= new ChromeDriver();
         driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
     }
+
+
     @Test(priority = 1)
 
     public void test(){
-driver.get("https://www.amazon.com");
+
+        driver.get("https://www.amazon.com");
         System.out.println(driver.getTitle());
+
     }
+
     @Test
     public void techproTest(){
+
         driver.get("https://www.techproeducation.com");
         System.out.println(driver.getTitle());
     }
 
     @Test
     public void facebookTest(){
+
         driver.get("https://www.facebook.com");
         System.out.println(driver.getTitle());
     }
@@ -42,7 +50,7 @@ driver.get("https://www.amazon.com");
 
     @AfterMethod
     public  void tearDown(){
-driver.close();
+        driver.close();
 
     }
 }
