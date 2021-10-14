@@ -33,6 +33,7 @@ public class C3_DropDownAmazon {
 
 
     public void setup(){
+
         WebDriverManager.chromedriver().setup();
         driver= new ChromeDriver();
         driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
@@ -58,18 +59,27 @@ public class C3_DropDownAmazon {
     public void test2(){
 
         WebElement booksOption=driver.findElement(By.xpath("//select[@aria-describedby='searchDropdownDescription']"));
-Select select=new Select(booksOption);
-select.selectByValue("search-alias=stripbooks-intl-ship");
+
+        Select select=new Select(booksOption);
+
+         select.selectByValue("search-alias=stripbooks-intl-ship");
 // arama kutusunu bulacak java yazip enter a basacak
-driver.findElement(By.id("twotabsearchtextbox")).sendKeys("Java" + Keys.ENTER);
+
+        driver.findElement(By.id("twotabsearchtextbox")).sendKeys("Java" + Keys.ENTER);
 
 WebElement javaResults=driver.findElement(By.xpath("//div[@class='a-section a-spacing-small a-spacing-top-small']"));
+
     System.out.println("bulunan java sonuclari : " +javaResults.getText());
+
     Assert.assertTrue(javaResults.getText().contains("Java"),"Java kelimesini icermiyor");
+
+
+
 
 }
     @AfterClass
     public void tearDown(){
+
 
         driver.quit();
     }
