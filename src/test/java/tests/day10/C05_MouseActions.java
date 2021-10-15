@@ -1,9 +1,13 @@
 package tests.day10;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 import utilities.TestBase;
+
+import java.util.Set;
 
 public class C05_MouseActions extends TestBase {
 
@@ -15,10 +19,41 @@ public class C05_MouseActions extends TestBase {
 
     @Test
     public void test(){
-driver.get("https://www.amazon.com/");
-Actions actions=new Actions(driver);
-    //    WebElement menu= driver.findElement();
 
+driver.get("https://www.amazon.com/");
+
+Actions actions=new Actions(driver);
+
+WebElement accountList=driver.findElement(By.id("nav-link-accountList-nav-line-1"));
+
+actions.moveToElement(accountList).perform();
+
+String firstPageHandel=driver.getWindowHandle();
+
+driver.findElement(By.xpath("//span[text()='Create a List']")).click();
+
+String secondPageHandle="";
+
+Set<String> allHandles=driver.getWindowHandles();
+
+        for (String each:allHandles)
+
+        {
+            if (!each.equals(firstPageHandel))
+
+            {
+                each=secondPageHandle;
+
+            }
+        }
+
+        driver.switchTo().window(secondPageHandle);
+
+
+
+        WebElement actualText=driver.findElement(By.xpath("//li[@class='a-tab-heading a-active a-size-large']"));
+
+        Assert.assertTrue(actualText.isEnabled());
 
     }
 
