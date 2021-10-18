@@ -43,12 +43,20 @@ ve gorunur oldugunu test edin
 
     }
 
+
 @Test
     public void visibleTest()
 
 {
+    driver.get("https://demoqa.com/dynamic-properties");
 
+    WebElement visibleAfterButton=driver.findElement(By.id("visibleAfter"));
 
+WebDriverWait wait=new WebDriverWait(driver, 10);
+
+ wait.until(ExpectedConditions.elementToBeClickable(visibleAfterButton));
+
+ Assert.assertTrue(visibleAfterButton.isEnabled(),"FAILED Button is not enabled");
 }
 
 
