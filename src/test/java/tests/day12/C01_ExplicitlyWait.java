@@ -29,11 +29,12 @@ public class C01_ExplicitlyWait extends TestBase {
     WebElement mesaj= driver.findElement(By.id("message"));
     SoftAssert softAssert=new SoftAssert();
     softAssert.assertTrue(mesaj.isDisplayed());
-    softAssert.assertAll();
+
 
     driver.findElement(By.xpath("//button[@onclick='swapCheckbox()']")).click();
     mesaj= driver.findElement(By.id("message"));
     Assert.assertTrue(mesaj.isDisplayed());
+    softAssert.assertAll();
 }
 
 
