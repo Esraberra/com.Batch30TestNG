@@ -20,7 +20,7 @@ public class C04_FileDownload extends TestBase {
         driver.get("https://the-internet.herokuapp.com/download");
 
         //      - logo.png dosyasını indirelim
-        driver.findElement(By.xpath("//a[text()='logo.png']")).click();
+        driver.findElement(By.linkText("leo.jpg")).click();
 
         Thread.sleep(5000);
     }

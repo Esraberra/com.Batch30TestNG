@@ -19,7 +19,7 @@ public class C03_FileExist  {
 
     String dosyaYolu=System.getProperty("user.home") + "/Downloads/picture.jpg";
 
-    //System.out.println(Files.exists(Paths.get(dosyaYolu))); birinci yol
+ System.out.println(Files.exists(Paths.get(dosyaYolu)));
 Assert.assertTrue(Files.exists(Paths.get(dosyaYolu)));
 
 

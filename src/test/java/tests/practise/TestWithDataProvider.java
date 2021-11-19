@@ -25,6 +25,8 @@ Cucumber’daki Scenario Outline ile ayni isleve sahiptir
 
 
     @Test(dataProvider = "getData")
+
+
     public void searchFunction(String txtSearch) throws InterruptedException {
         driver.get("http://opencart.abstracta.us/index.php?route=account/login");
 
@@ -62,12 +64,16 @@ Cucumber’daki Scenario Outline ile ayni isleve sahiptir
         for (WebElement macs : productList) {
             Assert.assertTrue(macs.getText().toLowerCase().contains(txtSearch.toLowerCase()));
         }
+
     }
 
     @DataProvider
+
     public Object[] getData()
+
     {
         Object[] data={"Mac", "ipod","samsung"};
+
         return data;
 
     }

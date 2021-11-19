@@ -17,7 +17,7 @@ public abstract class TestBase {
 
     protected WebDriver driver;
     @BeforeClass
-    public void setup(){
+    public void setup() throws InterruptedException {
         WebDriverManager.chromedriver().setup();
         driver=new ChromeDriver();
         driver.manage().window().maximize();
